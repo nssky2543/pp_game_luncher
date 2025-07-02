@@ -21,7 +21,7 @@ app.on(
   'GET',
   [
     '/gs2c/promo/active*',
-    '/gs2c/common/v1/games-html5/games/vs/vs20sugarrush/desktop/customizations.info*',
+    '/gs2c/common/v1/games-html5/games/vs/*/desktop/customizations.info*',
     '/gs2c/announcements/unread*',
     '/gs2c/promo/frb/available*',
     '/ClientAPI/events/active*',
