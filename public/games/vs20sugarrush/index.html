@@ -1034,7 +1034,7 @@
                 "k4NN/WR8+MEL4EibbkNgWuCcUknhNJR8Kb2Y0iLrSaJp94PkhQS35pO1GnLA/SAKSFgJaSnxo0BSuUV7MB6RTcdAZeeigxWKLzOT71xY6UvTve9jjN6kTx4Y9NzMr/+vPcPlW9QN8Bv7FXFgONsQ0MgVqFawZgWj7M/lY0hfWAE="
                 ]
             };
-            const lobby = "https://lobby.sandbox.pragmaticpplay.com";
+            const lobby = window.location.origin;
             if (lobby) {
                 const lobbyDomain = lobby.replace(/^https?:\/\//, '');
                 Object.assign(gameConfig, {

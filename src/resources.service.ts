@@ -36,7 +36,9 @@ export const DownloadController = (domain: string) => {
         const contentType = data.headers.get('content-type')
         if (contentType?.includes('text/html')) {
           const gameDir = resolve(process.cwd(), `public/games/${url.pathname}index.html`)
-          await Bun.write(gameDir, await data.blob())
+          let htmlContent = await data.text();
+          htmlContent = htmlContent.replace('"https://lobby.sandbox.pragmaticpplay.com"', 'window.location.origin');
+          await Bun.write(gameDir, htmlContent)
           console.log('success html fetch: ', data.url)
           return new Response(Bun.file(gameDir), {
             headers: {
