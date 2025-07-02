@@ -15,13 +15,26 @@ app.use(
     origin: '*'
   })
 )
-app.get(
-  '/gs2c/common/v1/games-html5/games/vs/vs20sugarrush/desktop/customizations.info*',
+
+// Routes ที่ต้องการ response เหมือนกัน
+app.on(
+  'GET',
+  [
+    '/gs2c/promo/active*',
+    '/gs2c/common/v1/games-html5/games/vs/vs20sugarrush/desktop/customizations.info*',
+    '/gs2c/announcements/unread*',
+    '/gs2c/promo/frb/available*'
+  ],
   async c => {
     c.status(200)
     return c.text('')
   }
 )
+app.on('POST', ['/gs2c/stats.do*'], async c => {
+  c.status(200)
+  return c.json({ description: 'OK', error: 0, serverTime: Date.now() })
+})
+
 app.use(
   '*',
   etag(),
@@ -63,6 +76,7 @@ app.all('*', async c => {
     // ส่ง request ไปยัง target URL
     const response = await fetch(targetUrl, requestOptions)
     console.log('Target URL:', targetUrl)
+    console.log('Method:', c.req.method)
     console.log('Response status:', response.status)
 
     // สร้าง response headers สำหรับส่งกลับ (ยกเว้น headers ที่อาจจะทำให้เกิดปัญหา)

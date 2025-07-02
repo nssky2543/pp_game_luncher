@@ -5,10 +5,14 @@ import { log } from 'console'
 
 export const DownloadController = (domain: string) => {
   const app = new Hono()
-  
-  app.get('/gs2c/common/*', async c => {
+
+  app.get('/*', async (c, next) => {
     const url = new URL(c.req.url)
     const targetUrl = `${domain}${url.pathname}${url.search}`
+    // check if path includes /gs2c/reloadBalance.do use await next()
+    if (url.pathname.includes('reloadBalance.do')) {
+      return await next()
+    }
     const headers = new Headers()
 
     // วนลูปผ่าน headers ของ request
@@ -28,6 +32,18 @@ export const DownloadController = (domain: string) => {
       const data: any = res
 
       if (data.status == 200) {
+        // check content-type
+        const contentType = data.headers.get('content-type')
+        if (contentType?.includes('text/html')) {
+          const gameDir = resolve(process.cwd(), `public/games/${url.pathname}index.html`)
+          await Bun.write(gameDir, await data.blob())
+          console.log('success html fetch: ', data.url)
+          return new Response(Bun.file(gameDir), {
+            headers: {
+              'Content-Type': 'text/html'
+            }
+          })
+        }
         const gameDir = resolve(process.cwd(), `public/games/${url.pathname}`)
         await Bun.write(gameDir, await data.blob())
         console.log('success fetch: ', data.url)
