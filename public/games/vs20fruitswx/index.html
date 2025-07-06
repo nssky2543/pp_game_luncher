@@ -1095,6 +1095,20 @@
             </div>
         </div>
         <script>
+            // Zoom effect when page loads
+            window.addEventListener('load', function() {
+                // Store original zoom
+                var originalZoom = document.body.style.zoom || 1;
+                
+                // Zoom to 110%
+                document.body.style.zoom = '110%';
+                
+                // Return to original zoom after 1 second
+                setTimeout(function() {
+                    document.body.style.zoom = originalZoom;
+                }, 1000);
+            });
+            
             setTimeout(function() {
                 var noga = false;
                 window.sendToGame = function(data) {
