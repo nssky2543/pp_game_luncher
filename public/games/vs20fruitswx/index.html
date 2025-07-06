@@ -990,6 +990,10 @@
             }
             window.addEventListener("DOMContentLoaded", scaleLoadingBar, false);
             window.addEventListener('resize', scaleLoadingBar, false);
+            window.addEventListener("DOMContentLoaded", function() {
+                scaleLoadingBar();
+                setTimeout(scaleLoadingBar, 100);
+            });
         </script>
         <script type="text/javascript" src="/gs2c/common/js/html5-script-external.js"></script>
         <script type="text/javascript">
@@ -1086,7 +1090,6 @@
                 </div>
             </div>
         </div>
-        
         <div class="loading-holder" id="#PauseRoot">
             <div class="loading-root" id="ScaleRootLoading" style="display: none;">
                 <div id="pplogo"></div>
@@ -1096,20 +1099,20 @@
             </div>
         </div>
         <script>
-            // setTimeout(function() {
-            //     var noga = false;
-            //     window.sendToGame = function(data) {
-            //         var message = JSON.parse(data);
-            //         var req = message.args.config.jurisdictionRequirements + "" + message.args.config.brandRequirements;
-            //         if (req.indexOf("NOGA") != -1)
-            //             noga = true;
-            //     }
-            //     if (window["sendToAdapter"])
-            //         sendToAdapter(JSON.stringify({
-            //             common: "EVT_GET_CONFIGURATION",
-            //             type: "html5"
-            //         }));
-            // }, 1);
+            setTimeout(function() {
+                var noga = false;
+                window.sendToGame = function(data) {
+                    var message = JSON.parse(data);
+                    var req = message.args.config.jurisdictionRequirements + "" + message.args.config.brandRequirements;
+                    if (req.indexOf("NOGA") != -1)
+                        noga = true;
+                }
+                if (window["sendToAdapter"])
+                    sendToAdapter(JSON.stringify({
+                        common: "EVT_GET_CONFIGURATION",
+                        type: "html5"
+                    }));
+            }, 1);
         </script>
     </body>
 </html>
