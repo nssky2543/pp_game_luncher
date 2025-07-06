@@ -953,7 +953,7 @@
             }
         </style>
         <script>
-            var ppLogoShouldBeHidden = "vs20fruitswx" === "vs25goldparty" || "vs20fruitswx" === "vs10txbigbass" || "vs20fruitswx" === "vswayslions" || "vs20fruitswx" === "vswaysfreezet" || "vs20fruitswx" === "vswaysdogs" || "vs20fruitswx" === "vswayspowzeus";
+            var ppLogoShouldBeHidden = "vs20fruitswx" === "vs20fruitswx" || "vs20fruitswx" === "vs10txbigbass" || "vs20fruitswx" === "vswayslions" || "vs20fruitswx" === "vswaysfreezet" || "vs20fruitswx" === "vswaysdogs" || "vs20fruitswx" === "vswayspowzeus";
 
             var scaleLoadingBar = function() {
                 if (document.getElementById("ScaleRootLoading").style.display == "none")
@@ -974,7 +974,7 @@
                 }
 
                 var styles = ["-moz-transform: scale(VAL)", "-webkit-transform: scale(VAL)", "-ms-transform: scale(VAL)", "-o-transform: scale(VAL)", "transform: scale(VAL)"];
-                if (ppLogoShouldBeHidden) styles.push("display: block");
+                if (ppLogoShouldBeHidden) styles.push("display: none");
 
                 if (UHT_DEVICE_TYPE.DESKTOP)
                     zoom = zoom > 1 ? 1 : zoom;
