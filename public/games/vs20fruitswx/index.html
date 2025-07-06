@@ -988,12 +988,11 @@
 
                 document.getElementById("ScaleRootLoading").setAttribute("style", styles.join(";"));
             }
-            window.addEventListener("DOMContentLoaded", scaleLoadingBar, false);
-            window.addEventListener('resize', scaleLoadingBar, false);
             window.addEventListener("DOMContentLoaded", function() {
                 scaleLoadingBar();
                 setTimeout(scaleLoadingBar, 100);
             });
+            window.addEventListener('resize', scaleLoadingBar, false);
         </script>
         <script type="text/javascript" src="/gs2c/common/js/html5-script-external.js"></script>
         <script type="text/javascript">
