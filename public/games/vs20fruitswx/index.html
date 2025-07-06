@@ -898,7 +898,7 @@
             }
 
             #ScaleRootLoading {
-                z-index: 2;
+                z-index: 999;
                 margin: auto;
             }
 
@@ -957,7 +957,7 @@
 
             var scaleLoadingBar = function() {
                 if (document.getElementById("ScaleRootLoading").style.display == "none")
-                    document.getElementById("ScaleRootLoading").style.display = "block"
+                    document.getElementById("ScaleRootLoading").style.display = "block;"
                 var scaleRootHeight = 999;
                 var zoom = 1;
 
@@ -1066,7 +1066,7 @@
             });
         </script>
     </head>
-    <body class="">
+    <body class="CLIENT EXTERNAL HTML5">
         <div class="pageOverlap"></div>
         <div class="message-box browser-unsupported-message">
             <div class="message-title" style="color: #fff;">You are using an unsupported browser.</div>
@@ -1087,7 +1087,7 @@
             </div>
         </div>
         <div class="loading-holder" id="#PauseRoot">
-            <div class="loading-root" id="ScaleRootLoading" style="display: none;">
+            <div class="loading-root" id="ScaleRootLoading">
                 <div id="pplogo"></div>
                 <div class="meter">
                     <span style="width: 1%" id="loadingBar"></span>
