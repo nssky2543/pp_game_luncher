@@ -817,32 +817,32 @@
                 UHTLogotype.timer = (new Date).getTime();
                 UHTLogoIsVisible = true;
                 UHTLogotype.HandleResize();
-                window.addEventListener("resize", UHTLogotype.HandleResize, true);
+                window.addEventListener("resize", UHTLogotype.HandleResize, false);
                 if (UHTLogotype.gameLoadingStarted)
                     UHTLogotype.DelayHideLogo(UHTLogotype.duration)
             }
             ;
-            // UHTLogotype.HandleResize = function() {
-            //     if (UHTLogotype.data == null)
-            //         return;
-            //     var w = UHTLogotype.logoImg.width;
-            //     var h = UHTLogotype.logoImg.height;
-            //     var sw = "auto";
-            //     var sh = "auto";
-            //     var r1 = window.innerWidth / window.innerHeight;
-            //     var r2 = w / h;
-            //     if (UHTLogotype.data["fit"] == "shrink")
-            //         if (r2 < r1)
-            //             sh = "100%";
-            //         else
-            //             sw = "100%";
-            //     else if (r2 < r1)
-            //         sw = "100%";
-            //     else
-            //         sh = "100%";
-            //     UHTLogotype.logoEl.style.backgroundSize = [sw, sh].join(" ")
-            // }
-            // ;
+            UHTLogotype.HandleResize = function() {
+                if (UHTLogotype.data == null)
+                    return;
+                var w = UHTLogotype.logoImg.width;
+                var h = UHTLogotype.logoImg.height;
+                var sw = "auto";
+                var sh = "auto";
+                var r1 = window.innerWidth / window.innerHeight;
+                var r2 = w / h;
+                if (UHTLogotype.data["fit"] == "shrink")
+                    if (r2 < r1)
+                        sh = "100%";
+                    else
+                        sw = "100%";
+                else if (r2 < r1)
+                    sw = "100%";
+                else
+                    sh = "100%";
+                UHTLogotype.logoEl.style.backgroundSize = [sw, sh].join(" ")
+            }
+            ;
             UHTLogotype.GameLoadingStarted = function() {
                 UHTLogotype.gameLoadingStarted = true;
                 if (UHTLogotype.data == null) {
@@ -989,7 +989,7 @@
                 document.getElementById("ScaleRootLoading").setAttribute("style", styles.join(";"));
             }
             window.addEventListener("DOMContentLoaded", scaleLoadingBar, false);
-            window.addEventListener('resize', scaleLoadingBar, true);
+            window.addEventListener('resize', scaleLoadingBar, false);
         </script>
         <script type="text/javascript" src="/gs2c/common/js/html5-script-external.js"></script>
         <script type="text/javascript">
