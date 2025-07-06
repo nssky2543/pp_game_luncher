@@ -25,6 +25,8 @@ app.on(
     '/gs2c/announcements/unread*',
     '/gs2c/promo/frb/available*',
     '/ClientAPI/events/active*',
+    '/gs2c/common/v1/games-html5/games/vs/*/mobile/customizations.info*',
+    '/gs2c/reloadBalance.do*'
   ],
   async c => {
     c.status(200)
