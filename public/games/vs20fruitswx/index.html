@@ -957,7 +957,7 @@
 
             var scaleLoadingBar = function() {
                 if (document.getElementById("ScaleRootLoading").style.display == "none")
-                    document.getElementById("ScaleRootLoading").style.display = "block"
+                    document.getElementById("ScaleRootLoading").style.display = "block;"
                 var scaleRootHeight = 999;
                 var zoom = 1;
 
@@ -988,10 +988,7 @@
 
                 document.getElementById("ScaleRootLoading").setAttribute("style", styles.join(";"));
             }
-            window.addEventListener("DOMContentLoaded", function() {
-                scaleLoadingBar();
-                setTimeout(scaleLoadingBar, 100);
-            });
+            window.addEventListener("DOMContentLoaded", scaleLoadingBar, false);
             window.addEventListener('resize', scaleLoadingBar, false);
         </script>
         <script type="text/javascript" src="/gs2c/common/js/html5-script-external.js"></script>
