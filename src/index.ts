@@ -116,6 +116,7 @@ app.all('*', async c => {
 
 Bun.serve({
   fetch: app.fetch,
+  hostname: "0.0.0.0",
   port: port
 })
 
